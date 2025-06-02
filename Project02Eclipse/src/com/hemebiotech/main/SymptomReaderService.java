@@ -1,10 +1,12 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.main;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.hemebiotech.interfaces.ISymptomReader;
 
 /**
  * Service that reads symptoms from a file.

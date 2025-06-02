@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.main;
 
 /**
  * Main application to run the AnalyticsCounter.

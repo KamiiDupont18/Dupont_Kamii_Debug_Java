@@ -1,4 +1,4 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.interfaces;
 
 import java.util.List;
 

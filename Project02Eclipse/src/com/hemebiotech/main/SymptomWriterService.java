@@ -1,8 +1,10 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.main;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
+
+import com.hemebiotech.interfaces.ISymptomWriter;
 
 /**
  * Service that writes symptoms and their counts to a file.
