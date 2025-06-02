@@ -23,6 +23,7 @@ public class AnalyticsCounter {
     public AnalyticsCounter(SymptomReaderService readerService,
                             SymptomCounterService counterService,
                             SymptomWriterService writerService) {
+        //* Dependency injection of service instances
         this.readerService = readerService;
         this.counterService = counterService;
         this.writerService = writerService;
@@ -34,9 +35,16 @@ public class AnalyticsCounter {
      * @throws IOException if writing fails
      */
     public void execute() throws IOException {
+        //* Get raw data for processing
         List<String> symptoms = readerService.GetSymptoms();
+
+        //* Transform raw list into a frequency map
         Map<String, Integer> counted = counterService.countSymptoms(symptoms);
+
+        //* Prepare sorted results for output
         Map<String, Integer> sorted = counterService.sortSymptoms(counted);
+
+        //* Write the sorted symptom counts to the output file
         writerService.writeSymptoms(sorted);
     }
 }

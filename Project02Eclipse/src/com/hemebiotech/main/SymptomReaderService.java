@@ -1,12 +1,11 @@
 package com.hemebiotech.main;
 
+import com.hemebiotech.interfaces.ISymptomReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.hemebiotech.interfaces.ISymptomReader;
 
 /**
  * Service that reads symptoms from a file.
@@ -31,13 +30,18 @@ public class SymptomReaderService implements ISymptomReader {
      */
     @Override
     public List<String> GetSymptoms() {
+        //* Stores raw symptom data line by line
         List<String> symptoms = new ArrayList<>();
+        //* Try-with-resources to ensure BufferedReader is closed after use
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                symptoms.add(line.trim().toLowerCase());
-            }
+            String trimmedLine = line.trim().toLowerCase();
+            if (!trimmedLine.isEmpty()) {  // <-- ignore empty or blank lines
+                symptoms.add(trimmedLine);
+            }}
         } catch (IOException e) {
+            //* Simple error handling to notify about I/O issues
             System.err.println("Error reading symptoms file: " + e.getMessage());
         }
         return symptoms;

@@ -14,9 +14,14 @@ public class SymptomCounterService {
      * @return map of symptom names to their counts
      */
     public Map<String, Integer> countSymptoms(List<String> symptoms) {
+        // Map to store symptom counts
+        //* Uses HashMap for efficient insertion and retrieval
         Map<String, Integer> symptomCounts = new HashMap<>();
+        //* Converts symptom to lowercase to avoid case sensitivity issues
+        //* Trims whitespace to ensure clean keys
         for (String symptom : symptoms) {
             symptom = symptom.toLowerCase();
+            symptom = symptom.trim();
             symptomCounts.put(symptom, symptomCounts.getOrDefault(symptom, 0) + 1);
         }
         return symptomCounts;
@@ -29,6 +34,7 @@ public class SymptomCounterService {
      * @return sorted map of symptoms and counts
      */
     public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
+        //* Automatically sorts symptoms alphabetically
         return new TreeMap<>(symptoms);
     }
 }
