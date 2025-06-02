@@ -1,31 +1,42 @@
 package com.hemebiotech.analytics;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Main class that reads symptoms, counts them, and writes results.
+ * Coordinates symptom reading, counting, sorting, and writing.
  */
 public class AnalyticsCounter {
 
-    public static void main(String[] args) throws IOException {
+    private final SymptomReaderService readerService;
+    private final SymptomCounterService counterService;
+    private final SymptomWriterService writerService;
 
-        // Read symptoms from file
-        ISymptomReader reader = new ReadSymptomDataFromFile("symptoms.txt");
-        List<String> symptoms = reader.GetSymptoms();
+    /**
+     * Constructs the counter with its required services.
+     *
+     * @param readerService  service for reading symptoms
+     * @param counterService service for counting and sorting symptoms
+     * @param writerService  service for writing results
+     */
+    public AnalyticsCounter(SymptomReaderService readerService,
+                            SymptomCounterService counterService,
+                            SymptomWriterService writerService) {
+        this.readerService = readerService;
+        this.counterService = counterService;
+        this.writerService = writerService;
+    }
 
-        // Count symptoms
-        Map<String, Integer> symptomCounts = new TreeMap<>(); // TreeMap to keep entries sorted alphabetically
-
-        for (String symptom : symptoms) {
-            symptom = symptom.toLowerCase(); //* Normalize case
-            symptomCounts.put(symptom, symptomCounts.getOrDefault(symptom, 0) + 1);
-        }
-
-        // Write symptoms to file
-        ISymptomWriter writer = new WriteSymptomDataToFile("result.out");
-        writer.writeSymptoms(symptomCounts);
-
-        System.out.println("Symptoms counted and written to result.out");
+    /**
+     * Executes the complete process: read, count, sort, write.
+     *
+     * @throws IOException if writing fails
+     */
+    public void execute() throws IOException {
+        List<String> symptoms = readerService.GetSymptoms();
+        Map<String, Integer> counted = counterService.countSymptoms(symptoms);
+        Map<String, Integer> sorted = counterService.sortSymptoms(counted);
+        writerService.writeSymptoms(sorted);
     }
 }
