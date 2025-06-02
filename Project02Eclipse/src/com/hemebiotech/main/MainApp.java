@@ -5,7 +5,7 @@ package com.hemebiotech.main;
  */
 public class MainApp {
     public static void main(String[] args) {
-        String inputFile = "symptomsAltSpaces.txt"; //! Entry point for text file input
+        String inputFile = "symptoms.txt"; //! Entry point for text file input
         String outputFile = "result.out"; //! Entry point for text file output
 
         //* Responsible for loading raw symptom data
