@@ -1,3 +1,10 @@
+# You need to know before
+
+> This project has been developed using VisualStudioCode IDE, using better comments Extension.
+> Ce projet à été développé en utilisant l'IDE VisualStudioCode, et l'extension better comments.
+
+---
+
 # 🩺 AnalyticsCounter
 
 > A Java application that reads a list of symptoms from a file, counts their occurrences, sorts them, and writes the results to an output file.  
