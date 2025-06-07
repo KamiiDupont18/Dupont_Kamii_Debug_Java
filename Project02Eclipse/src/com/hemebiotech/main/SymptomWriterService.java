@@ -29,7 +29,7 @@ public class SymptomWriterService implements ISymptomWriter {
      */
     @Override
     public void writeSymptoms(Map<String, Integer> symptoms) throws IOException {
-        // Use try-with-resources to ensure the FileWriter is closed properly
+        //* Use try-with-resources to ensure the FileWriter is closed properly
         try (FileWriter writer = new FileWriter(filePath)) {
             //* Efficiently writes each symptom entry in "symptom: count" format
             for (Map.Entry<String, Integer> entry : symptoms.entrySet()) {
