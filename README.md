@@ -1,6 +1,6 @@
 # You need to know before
 
-> This project has been developed using VisualStudioCode IDE, using better comments Extension.
+> This project has been developed using VisualStudioCode IDE, using better comments extension.
 > Ce projet à été développé en utilisant l'IDE VisualStudioCode, et l'extension better comments.
 
 ---
