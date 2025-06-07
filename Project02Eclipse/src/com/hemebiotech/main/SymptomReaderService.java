@@ -37,7 +37,7 @@ public class SymptomReaderService implements ISymptomReader {
             String line;
             while ((line = reader.readLine()) != null) {
             String trimmedLine = line.trim().toLowerCase();
-            if (!trimmedLine.isEmpty()) {  // <-- ignore empty or blank lines
+            if (!trimmedLine.isEmpty()) {  //* <-- ignore empty or blank lines
                 symptoms.add(trimmedLine);
             }}
         } catch (IOException e) {

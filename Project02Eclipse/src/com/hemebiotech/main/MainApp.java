@@ -19,11 +19,10 @@ public class MainApp {
         AnalyticsCounter counter = new AnalyticsCounter(readerService, counterService, writerService);
         
         try {
-            // Execute the full symptom analysis pipeline
+            //* Execute the full symptom analysis pipeline
             counter.execute();
             System.out.println("Symptoms processed successfully."); // // Success message
         } catch (Exception e) {
-            // Catch any exception and output an error message
             //* Ensures program robustness by handling unexpected failures
             System.err.println("Failed to process symptoms: " + e.getMessage());
         }
